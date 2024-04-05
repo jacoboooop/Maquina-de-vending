@@ -6,6 +6,5 @@ using System.Threading.Tasks;
 
 namespace Maquina_de_vending {
     internal class Productos {
-
     }
 }
