@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Maquina_de_vending {
+
     internal class Productos {
+        public string Nombre { get; set; }
+
     }
 }
