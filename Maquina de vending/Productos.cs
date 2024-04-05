@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Maquina_de_vending {
-    internal class Program {
-        static void Main(string[] args) {
-            
-        }
+    internal class Productos {
     }
 }
