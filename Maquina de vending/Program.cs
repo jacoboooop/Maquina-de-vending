@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Maquina_de_vending {
     internal class Program {
-        //hskjdhf
         static void Main(string[] args) {
+            //asdfasdfasdf
         }
     }
 }
