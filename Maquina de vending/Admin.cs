@@ -8,6 +8,6 @@ namespace Maquina_de_vending
 {
     internal class Admin
     {
-        //PRUEBA
+        
     }
 }
