@@ -9,5 +9,6 @@ namespace Maquina_de_vending {
     internal class Productos {
         public string Nombre { get; set; }
 
+
 	}
 }
