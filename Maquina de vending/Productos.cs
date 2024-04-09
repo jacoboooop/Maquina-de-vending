@@ -21,5 +21,25 @@ namespace Maquina_de_vending {
             Descripcion = descripcion;
         }
 
+	public virtual string MostrarInformcion() 
+        { 
+        	return $"ID: {Id} \nNombre: {Nombre} \nUnidades: {Unidades} \nPrecio: {Precio} \nDescripcion: {Descripcion} "; 
+        }
+
+	public virtual void SolicitarDetalles()
+  	{
+      		Console.Clear();
+    		Id = contador;
+    		contador++;
+    		Console.Write("Nombre: ");
+    		Nombre = Console.ReadLine();
+    		Console.Write("Unidades: ");
+    		Unidades = int.Parse(Console.ReadLine());
+    		Console.Write("Precio: ");
+    		Precio = double.Parse(Console.ReadLine());
+    		Console.Write("Descripcion: ");
+    		Descripcion = Console.ReadLine();
+	}
+
 	}
 }
