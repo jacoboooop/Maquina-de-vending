@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Maquina_de_vending
 {
-    internal class UsuarioNormal
+    internal class UsuarioNormal : Usuario
     {
 
     }
