@@ -44,8 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Materiales_preciosos.cs" />
+    <Compile Include="Productos.cs" />
+    <Compile Include="ProductosAlimenticios.cs" />
+    <Compile Include="ProductosElectronicos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioNormal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
