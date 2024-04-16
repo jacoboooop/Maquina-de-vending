@@ -23,7 +23,7 @@ namespace Maquina_de_vending {
             Precio_unitario = precio_unitario;
             Descripcion = descripcion;
         }
-
+    /*
 	public virtual string MostrarInformcion() 
         { 
         	return $"ID: {ID} \nNombre: {Nombre} \nUnidades: {Unidades} \nPrecio: {Precio_unitario} \nDescripcion: {Descripcion} "; 
@@ -43,6 +43,6 @@ namespace Maquina_de_vending {
     		Console.Write("Descripcion: ");
     		Descripcion = Console.ReadLine();*/
 	}
-
+    
 	}
-}
+
