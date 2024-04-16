@@ -35,6 +35,11 @@ namespace Maquina_de_vending {
                     Console.WriteLine("Por favor introduzca una opción de la lista");
                     Thread.Sleep(1000);
                 }
+                switch (opcion)
+                {
+                    case 1:
+                        break;
+                }
             } while (opcion != 5);
         }
 
