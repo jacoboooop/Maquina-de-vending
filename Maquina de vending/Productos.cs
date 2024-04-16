@@ -28,7 +28,7 @@ namespace Maquina_de_vending {
 
 	public virtual void SolicitarDetalles()
   	{
-      		Console.Clear();
+      		/*Console.Clear();
     		Id = contador;
     		contador++;
     		Console.Write("Nombre: ");
@@ -38,7 +38,7 @@ namespace Maquina_de_vending {
     		Console.Write("Precio: ");
     		Precio = double.Parse(Console.ReadLine());
     		Console.Write("Descripcion: ");
-    		Descripcion = Console.ReadLine();
+    		Descripcion = Console.ReadLine();*/
 	}
 
 	}
