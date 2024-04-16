@@ -8,10 +8,13 @@ namespace Maquina_de_vending {
 
     internal class Productos {
 
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public int Unidades { get; set; }
         public double Precio_unitario { get; set; }
         public string Descripcion { get; set; }
+
+        static int contador = 1;
 
         public Productos () { }
         public Productos(string nombre, int unidades, double precio_unitario, string descripcion) {
@@ -36,7 +39,7 @@ namespace Maquina_de_vending {
     		Console.Write("Unidades: ");
     		Unidades = int.Parse(Console.ReadLine());
     		Console.Write("Precio: ");
-    		Precio = double.Parse(Console.ReadLine());
+    		Precio_unitario = double.Parse(Console.ReadLine());
     		Console.Write("Descripcion: ");
     		Descripcion = Console.ReadLine();
 	}
