@@ -27,5 +27,10 @@ namespace Maquina_de_vending {
                 opcion = int.Parse(Console.ReadLine());
             } while (opcion != 5);
         }
+
+        public static void ComprarProductos()
+        {
+
+        }
     }
 }
