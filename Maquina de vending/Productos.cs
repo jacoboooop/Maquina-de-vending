@@ -41,7 +41,7 @@ namespace Maquina_de_vending {
     		Console.Write("Precio: ");
     		Precio_unitario = double.Parse(Console.ReadLine());
     		Console.Write("Descripcion: ");
-    		Descripcion = Console.ReadLine();
+    		Descripcion = Console.ReadLine();*/
 	}
 
 	}
