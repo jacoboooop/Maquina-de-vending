@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Maquina_de_vending {
     internal class Program {
@@ -23,10 +24,22 @@ namespace Maquina_de_vending {
                 Console.WriteLine("     5. Salir");
                 Console.WriteLine("");
                 try {
-
+                    Console.Write("Opcion: ");
+                    opcion = int.Parse(Console.ReadLine());
                 }
-                Console.WriteLine("Opcion: ");
-                opcion = int.Parse(Console.ReadLine());
+                catch(FormatException e) {
+                    Console.WriteLine(e.Message);
+                    Console.ReadKey();
+                }
+                if(opcion > 5) {
+                    Console.WriteLine("Por favor introduzca una opción de la lista");
+                    Thread.Sleep(1000);
+                }
+                switch (opcion)
+                {
+                    case 1:
+                        break;
+                }
             } while (opcion != 5);
         }
 
