@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Maquina_de_vending {
     internal class Program {
         static void Main(string[] args) {
+
+            List<Productos> listaProductos = new List<Productos>();
              
             int opcion = 0;
             do {
