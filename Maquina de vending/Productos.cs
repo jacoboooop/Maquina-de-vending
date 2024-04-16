@@ -26,13 +26,13 @@ namespace Maquina_de_vending {
 
 	public virtual string MostrarInformcion() 
         { 
-        	return $"ID: {Id} \nNombre: {Nombre} \nUnidades: {Unidades} \nPrecio: {Precio} \nDescripcion: {Descripcion} "; 
+        	return $"ID: {ID} \nNombre: {Nombre} \nUnidades: {Unidades} \nPrecio: {Precio_unitario} \nDescripcion: {Descripcion} "; 
         }
 
 	public virtual void SolicitarDetalles()
   	{
       		Console.Clear();
-    		Id = contador;
+    		ID = contador;
     		contador++;
     		Console.Write("Nombre: ");
     		Nombre = Console.ReadLine();
