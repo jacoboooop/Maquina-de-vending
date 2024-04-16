@@ -71,7 +71,26 @@ namespace Maquina_de_vending
 
                         } while (opcionCompra != 2);
 
-                        Console.WriteLine();
+                        Console.WriteLine("Como desea pagar la compra");
+                        int opcionPago = int.Parse(Console.ReadLine());
+                        Console.WriteLine("1. Pagar en efectivo");
+                        Console.WriteLine("2. Pago con tarjeta");
+                        switch (opcionPago)
+                        {
+                            case 1:
+                                Console.WriteLine("Introducir monedas");
+                                do
+                                {
+
+                                } while ();
+                                break;
+                            case 2:
+                                break;
+                            default:
+                                Console.WriteLine("Opcion no valida");
+                                break;
+                        }
+                         
 
                         break;
                     default:
