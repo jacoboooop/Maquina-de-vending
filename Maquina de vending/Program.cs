@@ -8,6 +8,8 @@ using System.Threading;
 namespace Maquina_de_vending {
     internal class Program {
         static void Main(string[] args) {
+
+            List<Productos> listaProductos = new List<Productos>();
              
             int opcion = 0;
             do {
@@ -38,7 +40,13 @@ namespace Maquina_de_vending {
 
         public static void ComprarProductos()
         {
-
+            Console.Clear();
+            Console.WriteLine("Introduzca el ID del producto que sea comprar\n\n");
+            foreach (Productos p in listaProductos)
+            {
+                Console.WriteLine($"{p.MostrarInformcion()}");
+            }
+            Console.Write("\n\nID: ");
         }
     }
 }
