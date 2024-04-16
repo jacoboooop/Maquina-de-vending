@@ -10,6 +10,9 @@ namespace Maquina_de_vending {
             
         }
 
-        
+        public static void ComprarProductos()
+        {
+
+        }
     }
 }
