@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Maquina_de_vending
 
 
 
-        public ProductosAlimenticios(double calorias, double grasas, double azucares)
+        public ProductosAlimenticios(double calorias, double grasas, double azucares, string  nombre, int unidades, double precio_unitario,string descripcion)  : base(nombre, unidades, precio_unitario, descripcion)
         {
             Calorias = calorias;
             Grasas = grasas;
