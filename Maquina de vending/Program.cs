@@ -31,13 +31,13 @@ namespace Maquina_de_vending {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
                 }
-                if(opcion > 5) {
-                    Console.WriteLine("Por favor introduzca una opción de la lista");
-                    Thread.Sleep(1000);
-                }
                 switch (opcion)
                 {
                     case 1:
+
+                        break;
+                    default:
+                        Console.WriteLine("La opción nos es valida");
                         break;
                 }
             } while (opcion != 5);
@@ -52,6 +52,27 @@ namespace Maquina_de_vending {
                 Console.WriteLine($"{p.MostrarInformcion()}");
             }
             Console.Write("\n\nID: ");
+        }
+
+        public static void MostrarInformacionProductos(List<Productos> listaProductos) {
+            Console.Clear();
+            Console.WriteLine("Estos son los productos disponibles: ");
+            foreach(Productos p in listaProductos) {
+                Console.WriteLine($"{p.MostrarInformcion()}");
+            }
+            Console.Write("\n\nID: ");
+            int id = int.Parse(Console.ReadLine());
+            bool verif = false;
+            foreach (Productos p in listaProductos) {
+                if (id == p.ID) {
+                    verif = true;
+                    Console.WriteLine($"{p.MostrarInformcion()}");
+                    Console.ReadKey();
+                }
+            }
+            if (verif == false) {
+                Console.WriteLine("El id no coincide con ningún producto");
+            }
         }
     }
 }
