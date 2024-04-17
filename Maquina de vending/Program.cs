@@ -114,25 +114,50 @@ namespace Maquina_de_vending
                                 Console.WriteLine("Introduzca los datos de la tajeta");
                                 Console.Write("Numero de tarjeta: ");
                                 string numTarjeta = Console.ReadLine();
-                                Console.Write("Fecha de caducidad: ");
-                                string Caducidad = Console.ReadLine();
-                                Console.Write("Numero secreto: ");
-                                int numSecreto = int.Parse(Console.ReadLine());
-                                break;
+                                if (numTarjeta.Length < 16)
+                                {
+                                    Console.WriteLine("El numero de tarjeta tiene que tener por lo menos 16 dijitos");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.Write("Fecha de caducidad: ");
+                                    DateTime caducidad = DateTime.Parse(Console.ReadLine());
+                                    if (caducidad < DateTime.Now)
+                                    {
+                                        Console.WriteLine("Tarjeta caducada");
+                                        break;
+                                    }
+                                    else
+                                    {
+
+                                        Console.Write("Numero secreto: ");
+                                        string numSecreto = Console.ReadLine();
+                                        if (numSecreto.Length < 3)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Gracias por su compra");
+
+                                            foreach (Productos p in listaCompra)
+                                            {
+                                                Console.WriteLine($"Se ha dispensado {p.Nombre}");
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("El numero secreto tiene que tener un minimo de 3 digitos");
+                                            break;
+                                        }
+                                        
+                                    }
+                                }
                             default:
                                 Console.WriteLine("Opcion no valida");
                                 break;
                         }
-                        Console.Clear();
-                        Console.WriteLine("Gracias por su compra");
-
-                        foreach (Productos p in listaCompra)
-                        {
-                            Console.WriteLine($"Se ha dispensado {p.Nombre}");
-                        }
-                        
-                        Console.ReadKey();
-
                         break;
                     default:
                         Console.WriteLine("La opción nos es valida");
