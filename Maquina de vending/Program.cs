@@ -86,6 +86,8 @@ namespace Maquina_de_vending
                             }
 
                             //Pagar la compra
+                            
+                            Pago pagar = new Pago(pago);
 
                             Console.Clear();
                             Console.WriteLine("Como desea pagar la compra");
@@ -95,67 +97,11 @@ namespace Maquina_de_vending
                             switch (opcionPago)
                             {
                                 case 1:
-                                    Console.Clear();
-                                    double dinero = 0;
-                                    Console.WriteLine("Introducir monedas");
-                                    Console.WriteLine($"Dinero necesario: {pago}\n");
-                                    do
-                                    {
-                                        Console.WriteLine($"Dinero actual: {dinero}\n");
-                                        Console.WriteLine("1. 5 cent");
-                                        Console.WriteLine("2. 10 cent");
-                                        Console.WriteLine("3. 20 cent");
-                                        Console.WriteLine("4. 50 cent");
-                                        Console.WriteLine("5. 1 euro");
-                                        Console.WriteLine("6. 2 euros");
-                                        Console.Write("\nOpcion: ");
-                                    } while (dinero >= pago);
+                                    pagar.PagoEfectivo(listaCompra);
                                     break;
                                 case 2:
-                                    Console.Clear();
-                                    Console.WriteLine("Introduzca los datos de la tajeta");
-                                    Console.Write("Numero de tarjeta: ");
-                                    string numTarjeta = Console.ReadLine();
-                                    if (numTarjeta.Length < 16)
-                                    {
-                                        Console.WriteLine("El numero de tarjeta tiene que tener por lo menos 16 dijitos");
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        Console.Write("Fecha de caducidad: ");
-                                        DateTime caducidad = DateTime.Parse(Console.ReadLine());
-                                        if (caducidad < DateTime.Now)
-                                        {
-                                            Console.WriteLine("Tarjeta caducada");
-                                            break;
-                                        }
-                                        else
-                                        {
-
-                                            Console.Write("Numero secreto: ");
-                                            string numSecreto = Console.ReadLine();
-                                            if (numSecreto.Length < 3)
-                                            {
-                                                Console.Clear();
-                                                Console.WriteLine("Gracias por su compra");
-
-                                                foreach (Productos p in listaCompra)
-                                                {
-                                                    Console.WriteLine($"Se ha dispensado {p.Nombre}");
-                                                }
-
-                                                Console.ReadKey();
-                                                break;
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("El numero secreto tiene que tener un minimo de 3 digitos");
-                                                break;
-                                            }
-
-                                        }
-                                    }
+                                    pagar.PagoTargeta(listaCompra);
+                                    break;
                                 default:
                                     Console.WriteLine("Opcion no valida");
                                     break;
