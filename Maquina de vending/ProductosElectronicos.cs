@@ -9,8 +9,7 @@ namespace Maquina_de_vending
     internal class ProductosElectronicos : Productos
     {
         public string Material {  get; set; }
-        public bool Pilas {  get; set; }
-        
+        public bool Pilas { get; set; }
         public bool Precargado { get; set; }
 
 
