@@ -19,11 +19,11 @@ namespace Maquina_de_vending
             do
             {
                 Console.Clear();
-                Console.WriteLine("\t||||||||||||||||||||||||||||||||||||||||||||||||||");
-                Console.WriteLine("\t||                                              ||");
-                Console.WriteLine("\t||      Bienvenido a la maquina de vending      ||");
-                Console.WriteLine("\t||                                              ||");
-                Console.WriteLine("\t||||||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("\t||                                               ||");
+                Console.WriteLine("\t||      Bienvenido a la maquina de vending       ||");
+                Console.WriteLine("\t||                                               ||");
+                Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
                 Console.WriteLine("");
                 Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
                 Console.WriteLine("\t|                                                 |");
@@ -37,7 +37,7 @@ namespace Maquina_de_vending
                 Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
                 try
                 {
-                    Console.Write("Opcion: ");
+                    Console.Write("\n\n\tOpcion: ");
                     opcion = int.Parse(Console.ReadLine());
 
                     switch (opcion)
