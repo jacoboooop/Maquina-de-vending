@@ -19,149 +19,163 @@ namespace Maquina_de_vending
             do
             {
                 Console.Clear();
-                Console.WriteLine("-----Binevenido a la máquina de vending-----");
+                Console.WriteLine("\t||||||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("\t||                                              ||");
+                Console.WriteLine("\t||      Bienvenido a la maquina de vending      ||");
+                Console.WriteLine("\t||                                              ||");
+                Console.WriteLine("\t||||||||||||||||||||||||||||||||||||||||||||||||||");
                 Console.WriteLine("");
-                Console.WriteLine("Escoga la opción que quiera: ");
-                Console.WriteLine("     1. Comprar productos");
-                Console.WriteLine("     2, Mostrar información de productos");
-                Console.WriteLine("     3. Carga individual de productos");
-                Console.WriteLine("     4. Carga completa de productos");
-                Console.WriteLine("     5. Salir");
-                Console.WriteLine("");
+                Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("\t|                                                 |");
+                Console.WriteLine("\t|  Escoga la opción que quiera:                   |");
+                Console.WriteLine("\t|  1. Comprar productos                           |");
+                Console.WriteLine("\t|  2. Mostrar información de productos            |");
+                Console.WriteLine("\t|  3. Carga individual de productos               |");
+                Console.WriteLine("\t|  4. Carga completa de productos                 |");
+                Console.WriteLine("\t|  5. Salir                                       |");
+                Console.WriteLine("\t|                                                 |");
+                Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
                 try
                 {
                     Console.Write("Opcion: ");
                     opcion = int.Parse(Console.ReadLine());
+
+                    switch (opcion)
+                    {
+                        case 1:
+
+                            // Seleccionar productos
+
+                            int opcionCompra = 0;
+                            ComprarProductos(listaProductos, listaCompra);
+                            do
+                            {
+                                Console.WriteLine("1. Seguir comprando productos");
+                                Console.WriteLine("2. Pagar");
+                                opcionCompra = int.Parse(Console.ReadLine());
+                                try
+                                {
+                                    Console.Write("Opcion: ");
+                                    opcion = int.Parse(Console.ReadLine());
+                                    switch (opcionCompra)
+                                    {
+                                        case 1:
+                                            ComprarProductos(listaProductos, listaCompra);
+                                            break;
+                                        case 2:
+                                            Console.WriteLine("Vamos a pagar la compra...");
+                                            break;
+
+                                    }
+                                }
+                                catch (FormatException e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    Console.ReadKey();
+                                }
+
+                            } while (opcionCompra != 2);
+
+                            //Calcular el dinero que necesita para realizar la compra
+
+                            double pago = 0;
+
+                            foreach (Productos q in listaCompra)
+                            {
+                                pago = pago + q.Precio_unitario;
+                            }
+
+                            //Pagar la compra
+
+                            Console.Clear();
+                            Console.WriteLine("Como desea pagar la compra");
+                            int opcionPago = int.Parse(Console.ReadLine());
+                            Console.WriteLine("1. Pagar en efectivo");
+                            Console.WriteLine("2. Pago con tarjeta");
+                            switch (opcionPago)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    double dinero = 0;
+                                    Console.WriteLine("Introducir monedas");
+                                    Console.WriteLine($"Dinero necesario: {pago}\n");
+                                    do
+                                    {
+                                        Console.WriteLine($"Dinero actual: {dinero}\n");
+                                        Console.WriteLine("1. 5 cent");
+                                        Console.WriteLine("2. 10 cent");
+                                        Console.WriteLine("3. 20 cent");
+                                        Console.WriteLine("4. 50 cent");
+                                        Console.WriteLine("5. 1 euro");
+                                        Console.WriteLine("6. 2 euros");
+                                        Console.Write("\nOpcion: ");
+                                    } while (dinero >= pago);
+                                    break;
+                                case 2:
+                                    Console.Clear();
+                                    Console.WriteLine("Introduzca los datos de la tajeta");
+                                    Console.Write("Numero de tarjeta: ");
+                                    string numTarjeta = Console.ReadLine();
+                                    if (numTarjeta.Length < 16)
+                                    {
+                                        Console.WriteLine("El numero de tarjeta tiene que tener por lo menos 16 dijitos");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.Write("Fecha de caducidad: ");
+                                        DateTime caducidad = DateTime.Parse(Console.ReadLine());
+                                        if (caducidad < DateTime.Now)
+                                        {
+                                            Console.WriteLine("Tarjeta caducada");
+                                            break;
+                                        }
+                                        else
+                                        {
+
+                                            Console.Write("Numero secreto: ");
+                                            string numSecreto = Console.ReadLine();
+                                            if (numSecreto.Length < 3)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("Gracias por su compra");
+
+                                                foreach (Productos p in listaCompra)
+                                                {
+                                                    Console.WriteLine($"Se ha dispensado {p.Nombre}");
+                                                }
+
+                                                Console.ReadKey();
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("El numero secreto tiene que tener un minimo de 3 digitos");
+                                                break;
+                                            }
+
+                                        }
+                                    }
+                                default:
+                                    Console.WriteLine("Opcion no valida");
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            Console.WriteLine("La opción nos es valida");
+                            break;
+                    }
                 }
                 catch (FormatException e)
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
-                }
-                switch (opcion)
-                {
-                    case 1:
-
-                        // Seleccionar productos
-
-                        int opcionCompra = 0;
-                        ComprarProductos(listaProductos, listaCompra);
-                        do
-                        {
-                            Console.WriteLine("1. Seguir comprando productos");
-                            Console.WriteLine("2. Pagar");
-                            opcionCompra = int.Parse(Console.ReadLine());
-                            try
-                            {
-                                Console.Write("Opcion: ");
-                                opcion = int.Parse(Console.ReadLine());
-                                switch (opcionCompra)
-                                {
-                                    case 1:
-                                        ComprarProductos(listaProductos, listaCompra);
-                                        break;
-                                    case 2:
-                                        Console.WriteLine("Vamos a pagar la compra...");
-                                        break;
-
-                                }
-                            }
-                            catch (FormatException e)
-                            {
-                                Console.WriteLine(e.Message);
-                                Console.ReadKey();
-                            }
-
-                        } while (opcionCompra != 2);
-
-                        //Calcular el dinero que necesita para realizar la compra
-
-                        double pago = 0;
-
-                        foreach (Productos q in listaCompra)
-                        {
-                            pago = pago + q.Precio_unitario;
-                        }
-
-                        //Pagar la compra
-
-                        Console.Clear();
-                        Console.WriteLine("Como desea pagar la compra");
-                        int opcionPago = int.Parse(Console.ReadLine());
-                        Console.WriteLine("1. Pagar en efectivo");
-                        Console.WriteLine("2. Pago con tarjeta");
-                        switch (opcionPago)
-                        {
-                            case 1:
-                                Console.Clear();
-                                double dinero = 0;
-                                Console.WriteLine("Introducir monedas");
-                                Console.WriteLine($"Dinero necesario: {pago}\n");
-                                do
-                                {
-                                    Console.WriteLine($"Dinero actual: {dinero}\n");
-                                    Console.WriteLine("1. 5 cent");
-                                    Console.WriteLine("2. 10 cent");
-                                    Console.WriteLine("3. 20 cent");
-                                    Console.WriteLine("4. 50 cent");
-                                    Console.WriteLine("5. 1 euro");
-                                    Console.WriteLine("6. 2 euros");
-                                    Console.Write("\nOpcion: ");
-                                } while (dinero >= pago);
-                                break;
-                            case 2:
-                                Console.Clear();
-                                Console.WriteLine("Introduzca los datos de la tajeta");
-                                Console.Write("Numero de tarjeta: ");
-                                string numTarjeta = Console.ReadLine();
-                                if (numTarjeta.Length < 16)
-                                {
-                                    Console.WriteLine("El numero de tarjeta tiene que tener por lo menos 16 dijitos");
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.Write("Fecha de caducidad: ");
-                                    DateTime caducidad = DateTime.Parse(Console.ReadLine());
-                                    if (caducidad < DateTime.Now)
-                                    {
-                                        Console.WriteLine("Tarjeta caducada");
-                                        break;
-                                    }
-                                    else
-                                    {
-
-                                        Console.Write("Numero secreto: ");
-                                        string numSecreto = Console.ReadLine();
-                                        if (numSecreto.Length < 3)
-                                        {
-                                            Console.Clear();
-                                            Console.WriteLine("Gracias por su compra");
-
-                                            foreach (Productos p in listaCompra)
-                                            {
-                                                Console.WriteLine($"Se ha dispensado {p.Nombre}");
-                                            }
-
-                                            Console.ReadKey();
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("El numero secreto tiene que tener un minimo de 3 digitos");
-                                            break;
-                                        }
-                                        
-                                    }
-                                }
-                            default:
-                                Console.WriteLine("Opcion no valida");
-                                break;
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("La opción nos es valida");
-                        break;
                 }
             } while (opcion != 5);
         }
