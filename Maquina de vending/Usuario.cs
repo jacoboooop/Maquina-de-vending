@@ -12,7 +12,7 @@ namespace Maquina_de_vending
         //Atributos
 
         public double Dinero { get; private set; }
-        public List<Productos> listaProductos;
+        protected List<Productos> listaProductos;
 
         //Constructor 
 
@@ -24,9 +24,10 @@ namespace Maquina_de_vending
             listaProductos = Productos;
         }
 
+        public Usuario(List<Productos> productos) {
+        }
+
         //Metodos
-
-
         public string MostrarDinero()
         {
             return $"Dinero disponible: {Dinero}";

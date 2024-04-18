@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace Maquina_de_vending
 {
@@ -14,6 +15,10 @@ namespace Maquina_de_vending
 
             List<Productos> listaProductos = new List<Productos>();
             List<Productos> listaCompra = new List<Productos>();
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            Admin administrador = new Admin(1234);
+            listaUsuarios.Add(administrador);   
 
             int opcion = 0;
             do
@@ -110,6 +115,18 @@ namespace Maquina_de_vending
                         case 2:
                             break;
                         case 3:
+
+                            int contra = 0;
+                            Console.Clear();
+                            Console.Write("Esta opción es solo para administradores, introduzca la contraseña: ");
+                            contra = int.Parse(Console.ReadLine());
+                            
+                            if(contra == administrador.Contraseña) {
+                                
+
+                            
+                            }
+                            
                             break;
                         case 4:
                             break;
@@ -177,5 +194,12 @@ namespace Maquina_de_vending
                 Console.WriteLine("El id no coincide con ningún producto");
             }
         }
+
+        public static void CargaIndividualDeProductos() {
+            Console.Clear();
+            Console.WriteLine("Que quiere hacer: ");
+            Console.WriteLine(
+        }
+
     }
 }
