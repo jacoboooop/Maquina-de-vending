@@ -171,7 +171,11 @@ namespace Maquina_de_vending
             {
                 Console.WriteLine("El ID no se ha encontrado");
             }
-            else { Console.WriteLine("Gracias por la compra"); }
+            else 
+            { 
+                Console.WriteLine("Gracias por la compra"); 
+                foreach
+            }
         }
 
         public static void MostrarInformacionProductos(List<Productos> listaProductos)
