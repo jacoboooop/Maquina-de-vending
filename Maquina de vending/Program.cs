@@ -14,11 +14,9 @@ namespace Maquina_de_vending
         {
 
             List<Productos> listaProductos = new List<Productos>();
-            List<Productos> listaCompra = new List<Productos>();
-            List<Usuario> listaUsuarios = new List<Usuario>();
+            List<Productos> listaCompra = new List<Productos>();          
 
-            Admin administrador = new Admin(listaProductos ,1234);
-            listaUsuarios.Add(administrador);   
+            Admin administrador = new Admin(listaProductos ,1234);  
 
             int opcion = 0;
             do
@@ -203,7 +201,7 @@ namespace Maquina_de_vending
         public static void CargaIndividualDeProductos() {
             Console.Clear();
             Console.WriteLine("Que quiere hacer: ");
-            Console.WriteLine(
+            Console.WriteLine();
         }
 
     }
