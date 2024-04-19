@@ -17,7 +17,7 @@ namespace Maquina_de_vending
             List<Productos> listaCompra = new List<Productos>();
             List<Usuario> listaUsuarios = new List<Usuario>();
 
-            Admin administrador = new Admin(1234);
+            Admin administrador = new Admin(listaProductos ,1234);
             listaUsuarios.Add(administrador);   
 
             int opcion = 0;
@@ -120,12 +120,17 @@ namespace Maquina_de_vending
                             Console.Clear();
                             Console.Write("Esta opción es solo para administradores, introduzca la contraseña: ");
                             contra = int.Parse(Console.ReadLine());
-                            
-                            if(contra == administrador.Contraseña) {
-                                
-
-                            
+                            bool comprobar = false;
+                            comprobar = administrador.ComprobarContraseña(contra);
+                            if (comprobar == true)
+                            {
+                                administrador.AñadirExistenciasDePreductos();
                             }
+                            else
+                            {
+
+                            }
+                            
                             
                             break;
                         case 4:

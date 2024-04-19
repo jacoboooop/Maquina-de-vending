@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace Maquina_de_vending
 {
-    internal class Admin : Usuario
+    internal class Admin
     {
-        public int Contraseña {  get; set; }
+        private int Contraseña {  get; set; }
+        public List<Productos> Productos { get; set; }
 
-        public Admin(List<Productos> Productos) : base(Productos) { }
-        public Admin(int contraseña) {
-            Contraseña = contraseña;      
+        public Admin(List<Productos> productos, int contraseña)
+        {
+            Productos = productos;
+            Contraseña = contraseña;
         }
+        
         
         public void AñadirExistenciasDePreductos() {
 
@@ -22,22 +25,22 @@ namespace Maquina_de_vending
 
             Console.Clear();
             try {
-                if (listaProductos.Count >= 11) {
+                if (Productos.Count >= 11) {
                     Console.WriteLine("La lista de producos esta completa, no puede añadir más productos");
                 }
                 else {
-                    Console.WriteLine($"Puede añadir como máximo {12 - listaProductos.Count} productos");
+                    Console.WriteLine($"Puede añadir como máximo {12 - Productos.Count} productos");
                 }
                 Console.Write("Que tipo de producto quiere añadir: ");
                 nombre = Console.ReadLine();
-                foreach (Productos p in listaProductos) {
+                foreach (Productos p in Productos) {
                     if (nombre == p.Nombre) {
                         p.Nombre = nombre;
                         Console.Write("Cuantas unidades quiere añadir: ");
                         p.Unidades = int.Parse(Console.ReadLine());
                         Console.Write("Precio por unidad del producto: ");
                         p.Precio_unitario = int.Parse(Console.ReadLine());
-                        listaProductos.Add(p);
+                        Productos.Add(p);
                     }
                     else {
                         Console.WriteLine("El producto no existe");
@@ -51,6 +54,15 @@ namespace Maquina_de_vending
         }
         public void AñadirNuevosProductos() {
             
+        }
+
+        public bool ComprobarContraseña(int contraseñaComprobacion)
+        {
+            if (contraseñaComprobacion == Contraseña)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
