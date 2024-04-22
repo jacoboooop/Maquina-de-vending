@@ -111,8 +111,11 @@ namespace Maquina_de_vending
                             }
                             break;
                         case 2:
+                            MaquinaVending.MostrarInformacionProductos(listaProductos);
                             break;
                         case 3:
+
+                            //Pedimos la contraseña del administrador
 
                             int contra = 0;
                             Console.Clear();
@@ -126,10 +129,9 @@ namespace Maquina_de_vending
                             }
                             else
                             {
-
+                                Console.WriteLine("La contraseña es incorrecta");
+                                Console.ReadKey();  
                             }
-                            
-                            
                             break;
                         case 4:
                             break;
@@ -173,32 +175,6 @@ namespace Maquina_de_vending
             { 
                 Console.WriteLine("Gracias por la compra"); 
                 foreach
-            }
-        }
-
-        public static void MostrarInformacionProductos(List<Productos> listaProductos)
-        {
-            Console.Clear();
-            Console.WriteLine("Estos son los productos disponibles: ");
-            foreach (Productos p in listaProductos)
-            {
-                Console.WriteLine($"{p.MostrarInformcion()}");
-            }
-            Console.Write("\n\nID: ");
-            int id = int.Parse(Console.ReadLine());
-            bool verif = false;
-            foreach (Productos p in listaProductos)
-            {
-                if (id == p.ID)
-                {
-                    verif = true;
-                    Console.WriteLine($"{p.MostrarInformcion()}");
-                    Console.ReadKey();
-                }
-            }
-            if (verif == false)
-            {
-                Console.WriteLine("El id no coincide con ningún producto");
             }
         }
 

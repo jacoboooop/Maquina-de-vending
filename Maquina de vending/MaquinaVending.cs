@@ -1,25 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maquina_de_vending
-{
-    internal abstract class Admin
-    {
-        private int Contraseña {  get; set; }
+namespace Maquina_de_vending {
+    internal class MaquinaVending {
+
         public List<Productos> Productos { get; set; }
 
-        public Admin(List<Productos> productos, int contraseña)
-        {
+        public MaquinaVending(List<Productos> productos) {
             Productos = productos;
-            Contraseña = contraseña;
         }
-        
-        
+
+
+        public static void MostrarInformacionProductos(List<Productos> listaProductos) {
+            Console.Clear();
+            Console.WriteLine("Estos son los productos disponibles: ");
+            foreach (Productos p in listaProductos) {
+                Console.WriteLine($"{p.MostrarInformcion()}");
+            }
+            Console.Write("\n\nID: ");
+            int id = int.Parse(Console.ReadLine());
+            bool verif = false;
+            foreach (Productos p in listaProductos) {
+                if (id == p.ID) {
+                    verif = true;
+                    Console.WriteLine($"{p.MostrarInformcion()}");
+                    Console.ReadKey();
+                }
+            }
+            if (verif == false) {
+                Console.WriteLine("El id no coincide con ningún producto");
+            }
+        }
+
         public void AñadirExistenciasDePreductos() {
 
             string nombre;
@@ -31,15 +46,15 @@ namespace Maquina_de_vending
                 }
                 else {
                     Console.WriteLine($"Puede añadir como máximo {12 - Productos.Count} productos");
-                    foreach(Productos item in Productos) {
+                    foreach (Productos item in Productos) {
                         Console.WriteLine($"{item.Nombre}");
                     }
                     Console.Write("Que tipo de producto quiere añadir: ");
                     nombre = Console.ReadLine();
-                    bool verificar = VerificarProductoExistetnte(nombre);
+                    bool verificar = Admin.VerificarProductoExistetnte(nombre);
                     if (verificar == true) {
-                        foreach(Productos item in Productos) { 
-                            if(nombre == item.Nombre) {
+                        foreach (Productos item in Productos) {
+                            if (nombre == item.Nombre) {
                                 Console.WriteLine("Cuantas unidades quieres añadir: ");
                                 item.Unidades = int.Parse(Console.ReadLine());
                             }
@@ -49,33 +64,11 @@ namespace Maquina_de_vending
                         Console.WriteLine("Este producto no existe.");
                         Console.ReadKey();
                     }
-                }               
-            }
-            catch(FormatException e) {
-                Console.WriteLine(e.Message);  
-            }
-        }
-        public void AñadirNuevosProductos() {
-            
-        }
-
-        public bool ComprobarContraseña(int contraseñaComprobacion)
-        {
-            if (contraseñaComprobacion == Contraseña)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool VerificarProductoExistetnte(string nombre) {
-            foreach (Productos p in Productos) {
-                if(nombre == p.Nombre) {
-                    return true;
                 }
             }
-            return false;
+            catch (FormatException e) {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
-
