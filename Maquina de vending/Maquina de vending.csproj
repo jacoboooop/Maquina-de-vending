@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Maquina de vending.cs" />
     <Compile Include="Materiales_preciosos.cs" />
     <Compile Include="Pago.cs" />
     <Compile Include="Productos.cs" />
