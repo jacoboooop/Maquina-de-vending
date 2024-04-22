@@ -34,13 +34,13 @@ namespace Maquina_de_vending
                     foreach(Productos item in Productos) {
                         Console.WriteLine($"{item.Nombre}");
                     }
-                    Console.Write("Que tipo de producto quiere añadir: ");
+                    Console.Write("Que tipo de producto desea añadir: ");
                     nombre = Console.ReadLine();
                     bool verificar = VerificarProductoExistetnte(nombre);
                     if (verificar == true) {
                         foreach(Productos item in Productos) { 
                             if(nombre == item.Nombre) {
-                                Console.WriteLine("Cuantas unidades quieres añadir: ");
+                                Console.WriteLine("Cuantas unidades deseas añadir: ");
                                 item.Unidades = int.Parse(Console.ReadLine());
                             }
                         }

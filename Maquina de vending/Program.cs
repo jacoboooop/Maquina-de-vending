@@ -67,7 +67,7 @@ namespace Maquina_de_vending
                             }
                             else
                             {
-                                Console.WriteLine("La contraseña es incorrecta");
+                                Console.WriteLine("Las credenciales son incorrectas");
                                 Console.ReadKey();  
                             }
                             break;
@@ -89,7 +89,7 @@ namespace Maquina_de_vending
         public static void ComprarProductos(List<Productos> listaProductos, List<Productos> listaCompra)
         {
             Console.Clear();
-            Console.WriteLine("Introduzca el ID del producto que sea comprar\n\n");
+            Console.WriteLine("Introduzca el ID del producto que desea comprar\n\n");
             foreach (Productos p in listaProductos)
             {
                 Console.WriteLine($"{p.MostrarInformcion()}");
@@ -111,7 +111,7 @@ namespace Maquina_de_vending
             }
             else 
             { 
-                Console.WriteLine("Gracias por la compra");
+                Console.WriteLine("Gracias por su compra");
                 
             }
         }
@@ -119,7 +119,7 @@ namespace Maquina_de_vending
 
         public static void CargaIndividualDeProductos() {
             Console.Clear();
-            Console.WriteLine("Que quiere hacer: ");
+            Console.WriteLine("Que desea hacer: ");
             Console.WriteLine();
         }
 
