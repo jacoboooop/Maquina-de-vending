@@ -14,7 +14,7 @@ namespace Maquina_de_vending
         {
 
             List<Productos> listaProductos = new List<Productos>();
-            List<Productos> listaCompra = new List<Productos>();          
+            MaquinaVending maquina = new MaquinaVending(listaProductos);       
 
             Admin administrador = new Admin(listaProductos ,1234);  
 
