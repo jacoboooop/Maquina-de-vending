@@ -172,7 +172,13 @@ namespace Maquina_de_vending
             else 
             { 
                 Console.WriteLine("Gracias por la compra"); 
-                foreach
+                foreach (Productos e in listaProductos)
+                {
+                    if (e.Unidades == 0)
+                    {
+                        listaProductos.Remove(e);
+                    }
+                }
             }
         }
 
