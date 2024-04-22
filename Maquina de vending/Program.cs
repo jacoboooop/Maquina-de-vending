@@ -173,8 +173,8 @@ namespace Maquina_de_vending
             }
             else 
             { 
-                Console.WriteLine("Gracias por la compra"); 
-                foreach
+                Console.WriteLine("Gracias por la compra");
+                
             }
         }
 
