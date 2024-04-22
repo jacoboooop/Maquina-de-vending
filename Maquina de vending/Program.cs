@@ -14,8 +14,7 @@ namespace Maquina_de_vending
         {
 
             List<Productos> listaProductos = new List<Productos>();
-            MaquinaVending maquina = new MaquinaVending(listaProductos);
-                     
+            List<Productos> listaCompra = new List<Productos>();          
 
             Admin administrador = new Admin(listaProductos ,1234);  
 
@@ -87,6 +86,35 @@ namespace Maquina_de_vending
             } while (opcion != 5);
         }
 
+        public static void ComprarProductos(List<Productos> listaProductos, List<Productos> listaCompra)
+        {
+            Console.Clear();
+            Console.WriteLine("Introduzca el ID del producto que sea comprar\n\n");
+            foreach (Productos p in listaProductos)
+            {
+                Console.WriteLine($"{p.MostrarInformcion()}");
+            }
+            Console.Write("\n\nID: ");
+            int id = int.Parse(Console.ReadLine());
+            bool verif = false;
+            foreach (Productos p in listaCompra)
+            {
+                if (id == p.ID)
+                {
+                    verif = true;
+                    listaCompra.Add(p);
+                }
+            }
+            if (verif == false)
+            {
+                Console.WriteLine("El ID no se ha encontrado");
+            }
+            else 
+            { 
+                Console.WriteLine("Gracias por la compra");
+                
+            }
+        }
        
 
         public static void CargaIndividualDeProductos() {
