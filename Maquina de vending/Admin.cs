@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Maquina_de_vending
 {
-    internal abstract class Admin
+    internal class Admin
     {
         private int Contraseña {  get; set; }
         public List<Productos> Productos { get; set; }
@@ -68,7 +68,7 @@ namespace Maquina_de_vending
             return false;
         }
 
-        public static bool VerificarProductoExistetnte(string nombre) {
+        public bool VerificarProductoExistetnte(string nombre) {
             foreach (Productos p in Productos) {
                 if(nombre == p.Nombre) {
                     return true;
