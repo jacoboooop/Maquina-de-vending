@@ -31,16 +31,16 @@ namespace Maquina_de_vending
                 Console.WriteLine("\t||                                               ||");
                 Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
                 Console.WriteLine("");
-                Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
-                Console.WriteLine("\t|                                                 |");
-                Console.WriteLine("\t|  Escoga la opción que quiera:                   |");
-                Console.WriteLine("\t|  1. Comprar productos                           |");
-                Console.WriteLine("\t|  2. Mostrar información de productos            |");
-                Console.WriteLine("\t|  3. Carga individual de productos               |");
-                Console.WriteLine("\t|  4. Carga completa de productos                 |");
-                Console.WriteLine("\t|  5. Salir                                       |");
-                Console.WriteLine("\t|                                                 |");
-                Console.WriteLine("\t|||||||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("\t||||||||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("\t||                                                ||");
+                Console.WriteLine("\t||     Escoga la opción que quiera:               ||");
+                Console.WriteLine("\t||     1. Comprar productos                       ||");
+                Console.WriteLine("\t||     2. Mostrar información de productos        ||");
+                Console.WriteLine("\t||     3. Carga individual de productos           ||");
+                Console.WriteLine("\t||     4. Carga completa de productos             ||");
+                Console.WriteLine("\t||     5. Salir                                   ||");
+                Console.WriteLine("\t||                                                ||");
+                Console.WriteLine("\t||||||||||||||||||||||||||||||||||||||||||||||||||||");
                 try
                 {
                     Console.Write("\n\n\tOpcion: ");
