@@ -55,27 +55,16 @@ namespace Maquina_de_vending
                             maquina.MostrarInformacionProductos();
                             break;
                         case 3:
-
-                            //Pedimos la contraseña del administrador
-
-                            int contra = 0;
-                            Console.Clear();
-                            Console.Write("Esta opción es solo para administradores, introduzca la contraseña: ");
-                            contra = int.Parse(Console.ReadLine());
-                            bool comprobar = false;
-                            comprobar = administrador.ComprobarContraseña(contra);
-                            if (comprobar == true)
-                            {
-                                administrador.AñadirExistenciasDePreductos();
-                            }
-                            else
-                            {
-                                Console.WriteLine("Las credenciales son incorrectas");
-                                Console.ReadKey();  
+                            Login(administrador);
+                            if (Login(administrador) == true){
+                                maquina.
                             }
                             break;
                         case 4:
-
+                            Login(administrador);
+                            if (Login(administrador) == true) {
+                                maquina.AñadirNuevosProductos();
+                            }
                             break;
                         default:
                             Console.WriteLine("La opción nos es valida");
@@ -127,5 +116,20 @@ namespace Maquina_de_vending
             Console.WriteLine();
         }
 
+        public static bool Login(Admin administrador) {
+            int contra = 0;
+            
+            Console.Clear();
+            Console.Write("Esta opción es solo para administradores, introduzca la contraseña: ");
+            contra = int.Parse(Console.ReadLine());
+            bool comprobar = false;
+            comprobar = administrador.ComprobarContraseña(contra);
+            if(comprobar == true){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 }
