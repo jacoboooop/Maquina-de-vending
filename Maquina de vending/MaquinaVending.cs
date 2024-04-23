@@ -152,7 +152,6 @@ namespace Maquina_de_vending {
 
                 using (StreamReader cargaProductos = File.OpenText($"{nombreArchivo}.csv"))
                 {
-                    int contador = 1;
                     while (!cargaProductos.EndOfStream)
                     {
                         string line = cargaProductos.ReadLine();
@@ -160,7 +159,18 @@ namespace Maquina_de_vending {
 
                         if (values[1] == "1")
                         {
-                            Materiales_perciosos m = new Materiales_perciosos(values[1], values[2], values[3], values[4], values[5], values[6], values[7]);
+                            Materiales_perciosos m = new Materiales_perciosos(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], values[6], int.Parse(values[7]));
+                            ListaProductos.Add(m);
+                        }
+                        else if (values[1] == "2")
+                        {
+                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], double.Parse(values[6]), int.Parse(values[7]), double.Parse(values[8]));
+                            ListaProductos.Add(p);
+                        }
+                        else if (values[1] == "3")
+                        {
+                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], values[6], bool.Parse(values[7]), bool.Parse(values[8]));
+                            ListaProductos.Add(e);
                         }
 
                     }
