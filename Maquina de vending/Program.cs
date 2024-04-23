@@ -109,13 +109,6 @@ namespace Maquina_de_vending
             }
         }
        
-
-        public static void CargaIndividualDeProductos() {
-            Console.Clear();
-            Console.WriteLine("Que desea hacer: ");
-            Console.WriteLine();
-        }
-
         public static bool Login(Admin administrador) {
             int contra = 0;
             
