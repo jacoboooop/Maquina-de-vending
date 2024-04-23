@@ -55,13 +55,11 @@ namespace Maquina_de_vending
                             maquina.MostrarInformacionProductos();
                             break;
                         case 3:
-                            Login(administrador);
                             if (Login(administrador) == true){
                                 maquina.AñadirExistenciasDePreductos(administrador);
                             }
                             break;
                         case 4:
-                            Login(administrador);
                             if (Login(administrador) == true) {
                                 maquina.AñadirNuevosProductos();
                             }
