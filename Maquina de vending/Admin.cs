@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -56,7 +57,25 @@ namespace Maquina_de_vending
             }
         }
         public void AñadirNuevosProductos() {
-            
+            if (File.Exists("cargaProductos.csv"){
+
+                using (StreamReader cargaProductos = File.OpenText("cargaProductos.csv"))
+                {
+                    while (!cargaProductos.EndOfStream)
+                    {
+                        string line = cargaProductos.ReadLine();
+                        string[] values = line.Split(';');
+
+                        if (values.Length == 8)
+                        {
+
+                        }
+
+
+                    }
+                }
+
+            }
         }
 
         public bool ComprobarContraseña(int contraseñaComprobacion)
@@ -76,6 +95,9 @@ namespace Maquina_de_vending
             }
             return false;
         }
+
+
+
     }
 }
 

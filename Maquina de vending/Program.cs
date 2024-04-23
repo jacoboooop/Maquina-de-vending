@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace Maquina_de_vending
 {
@@ -16,8 +17,10 @@ namespace Maquina_de_vending
             List<Productos> listaProductos = new List<Productos>();
             MaquinaVending maquina = new MaquinaVending(listaProductos);       
 
-            Admin administrador = new Admin(listaProductos ,1234);  
+            Admin administrador = new Admin(listaProductos ,1234);
 
+
+            
             int opcion = 0;
             do
             {
