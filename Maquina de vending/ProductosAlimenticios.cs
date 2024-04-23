@@ -19,7 +19,7 @@ namespace Maquina_de_vending
 
 
 
-        public ProductosAlimenticios(double calorias, double grasas, double azucares, string  nombre, int unidades, double precio_unitario,string descripcion)  : base(nombre, unidades, precio_unitario, descripcion)
+        public ProductosAlimenticios(int tipoProducto, string nombre, int unidades, double precio_unitario, string descripcion, double calorias, double grasas, double azucares)  : base(tipoProducto,nombre, unidades, precio_unitario, descripcion)
         {
             Calorias = calorias;
             Grasas = grasas;

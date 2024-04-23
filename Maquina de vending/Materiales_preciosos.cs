@@ -11,8 +11,8 @@ namespace Maquina_de_vending {
         public int Peso { get; set; }
 
         public Materiales_perciosos() { }
-        public Materiales_perciosos(string nombre, int unidades, double precio_unitario, string descripcion, string tipo, int peso)
-            : base(nombre, unidades, precio_unitario, descripcion) {
+        public Materiales_perciosos(int tipoProducto, string nombre, int unidades, double precio_unitario, string descripcion, string tipo, int peso) : base(tipoProducto, nombre, unidades, precio_unitario, descripcion)
+        {
             Tipo = tipo;
             Peso = peso;
         }

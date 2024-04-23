@@ -16,7 +16,7 @@ namespace Maquina_de_vending
         public ProductosElectronicos() { }
 
 
-        public ProductosElectronicos(string nombre, int unidades, double precio, string descripcion, string material, bool pilas, bool precargado) : base(nombre, unidades, precio, descripcion)
+        public ProductosElectronicos(int tipoProducto,string nombre, int unidades, double precio, string descripcion, string material, bool pilas, bool precargado) : base(tipoProducto,nombre, unidades, precio, descripcion)
         {
             Material = material;
             Pilas = pilas;
