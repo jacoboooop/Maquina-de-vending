@@ -35,7 +35,8 @@ namespace Maquina_de_vending
                 Console.WriteLine("4. 50 cent");
                 Console.WriteLine("5. 1 euro");
                 Console.WriteLine("6. 2 euros");
-                switch (dinero)
+                int opcionDinero = int.Parse(Console.ReadLine());
+                switch (opcionDinero)
                 {
                     case 1:
                         dinero = dinero + 0.05;

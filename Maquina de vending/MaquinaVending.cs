@@ -88,9 +88,9 @@ namespace Maquina_de_vending {
 
             Console.Clear();
             Console.WriteLine("Como desea pagar la compra");
-            int opcionPago = int.Parse(Console.ReadLine());
             Console.WriteLine("1. Pagar en efectivo");
             Console.WriteLine("2. Pago con tarjeta");
+            int opcionPago = int.Parse(Console.ReadLine());
             switch (opcionPago)
             {
                 case 1:
@@ -190,7 +190,7 @@ namespace Maquina_de_vending {
         public void AñadirNuevosProductos()
         {
             Console.Clear();
-            Console.Write("Que nombre tiene el archvio tipo csv para cargar los productos: ");
+            Console.Write("Que nombre tiene el archivo tipo csv para cargar los productos: ");
             string nombreArchivo = Console.ReadLine();
 
             if (File.Exists($"{nombreArchivo}.csv"))
@@ -203,17 +203,17 @@ namespace Maquina_de_vending {
                         string line = cargaProductos.ReadLine();
                         string[] values = line.Split(';');
 
-                        if (values[1] == "1")
+                        if (values[0] == "1")
                         {
                             Materiales_perciosos m = new Materiales_perciosos(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], values[6], int.Parse(values[7]));
                             ListaProductos.Add(m);
                         }
-                        else if (values[1] == "2")
+                        else if (values[0] == "2")
                         {
                             ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], double.Parse(values[6]), int.Parse(values[7]), double.Parse(values[8]));
                             ListaProductos.Add(p);
                         }
-                        else if (values[1] == "3")
+                        else if (values[0] == "3")
                         {
                             ProductosElectronicos e = new ProductosElectronicos(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], values[6], bool.Parse(values[7]), bool.Parse(values[8]));
                             ListaProductos.Add(e);
