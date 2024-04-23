@@ -35,7 +35,41 @@ namespace Maquina_de_vending {
             }
         }
 
-        
+        public void AñadirExistenciasDePreductos() {
+
+            string nombre;
+
+            Console.Clear();
+            try {
+                if (ListaProductos.Count >= 12) {
+                    Console.WriteLine("La lista de producos esta completa, no puede añadir más productos");
+                }
+                else {
+                    Console.WriteLine($"Puede añadir como máximo {12 - ListaProductos.Count} productos");
+                    foreach (Productos item in ListaProductos) {
+                        Console.WriteLine($"{item.Nombre}");
+                    }
+                    Console.Write("Que tipo de producto quiere añadir: ");
+                    nombre = Console.ReadLine();
+                    bool verificar = Admin.VerificarProductoExistetnte(nombre);
+                    if (verificar == true) {
+                        foreach (Productos item in ListaProductos) {
+                            if (nombre == item.Nombre) {
+                                Console.WriteLine("Cuantas unidades quieres añadir: ");
+                                item.Unidades = int.Parse(Console.ReadLine());
+                            }
+                        }
+                    }
+                    else {
+                        Console.WriteLine("Este producto no existe.");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            catch (FormatException e) {
+                Console.WriteLine(e.Message);
+            }
+        }
 
         public void ComprarProducto()
         {
