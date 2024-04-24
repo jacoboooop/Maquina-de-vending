@@ -98,7 +98,7 @@ namespace Maquina_de_vending
 
                     Console.Write("Numero secreto: ");
                     string numSecreto = Console.ReadLine();
-                    if (numSecreto.Length < 3)
+                    if (numSecreto.Length < 4)
                     {
                         Console.Clear();
                         Console.WriteLine("Gracias por su compra");

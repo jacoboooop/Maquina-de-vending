@@ -49,7 +49,6 @@ namespace Maquina_de_vending {
             {
                 Console.WriteLine("1. Seguir comprando productos");
                 Console.WriteLine("2. Pagar");
-                opcionCompra = int.Parse(Console.ReadLine());
                 try
                 {
                     Console.Write("Opcion: ");
