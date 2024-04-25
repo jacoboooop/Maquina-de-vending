@@ -73,7 +73,7 @@ namespace Maquina_de_vending
                     Console.WriteLine("Elige entre 1 o 0");
                 }
             } while (Respuestaprecargadas > 1);
-
+            Console.WriteLine("\nProducto añadido correctamente.");
         }
     }
 }
