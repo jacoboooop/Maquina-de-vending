@@ -20,5 +20,14 @@ namespace Maquina_de_vending {
         public override string MostrarInformcion() {
             return base.MostrarInformcion() + $"\nTipo de producto {Tipo} \nPeso: {Peso}";
         }
+
+        public override void SolicitarDetalles() {
+            base.SolicitarDetalles();
+            Console.Write("Tipo de producto: ");
+            Tipo = Console.ReadLine();
+            Console.Write("Peso: ");
+            Peso = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nProducto añadido correctamente.");
+        }
     }
 }

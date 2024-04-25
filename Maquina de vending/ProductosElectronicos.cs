@@ -53,9 +53,7 @@ namespace Maquina_de_vending
                 {
                     Console.WriteLine("Elige entre 1 o 0");
                 }
-
-
-            } while (RespuestaPilas == 0 || RespuestaPilas == 1);
+            } while (RespuestaPilas > 1);
             int Respuestaprecargadas = 5;
             do
             {
@@ -74,7 +72,7 @@ namespace Maquina_de_vending
                 {
                     Console.WriteLine("Elige entre 1 o 0");
                 }
-            } while (Respuestaprecargadas == 0 || Respuestaprecargadas == 1);
+            } while (Respuestaprecargadas > 1);
 
         }
     }

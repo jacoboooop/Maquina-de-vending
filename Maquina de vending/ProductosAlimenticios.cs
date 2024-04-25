@@ -32,5 +32,16 @@ namespace Maquina_de_vending
         {
             return base.MostrarInformcion() + $"\nCalorias: {Calorias} \nGrasas: {Grasas} \nAzucares: {Azucares}";
         }
+
+        public override void SolicitarDetalles() {
+            base.SolicitarDetalles();
+            Console.Write("Calorias: ");
+            Calorias = int.Parse(Console.ReadLine());
+            Console.Write("Grasas: ");
+            Grasas = int.Parse(Console.ReadLine());
+            Console.Write("Azúcares: ");
+            Azucares = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nProducto añadido correctamente.");
+        }
     }
 }

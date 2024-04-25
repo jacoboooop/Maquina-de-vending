@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -154,31 +155,77 @@ namespace Maquina_de_vending {
                     Console.WriteLine("La lista de producos esta completa, no puede añadir más productos");
                 }
                 else
-                {
-                    Console.WriteLine($"Puede añadir como máximo {12 - ListaProductos.Count} productos");
-                    foreach (Productos item in ListaProductos)
-                    {
-                        Console.WriteLine($"{item.Nombre}");
-                    }
-                    Console.Write("Que tipo de producto quiere añadir: ");
-                    nombre = Console.ReadLine();
-                    bool verificar = admin.VerificarProductoExistetnte(nombre);
-                    if (verificar == true)
-                    {
-                        foreach (Productos item in ListaProductos)
-                        {
-                            if (nombre == item.Nombre)
-                            {
-                                Console.WriteLine("Cuantas unidades quieres añadir: ");
-                                item.Unidades = int.Parse(Console.ReadLine());
+                {        
+                    int opcion = 0;
+                    do {
+                        Console.WriteLine("Que rieres hacer: ");
+                        Console.WriteLine("     1. Añadir un producto existente");
+                        Console.WriteLine("     2. Añadir un nuevo producto");
+                        Console.WriteLine("     3. Salir");
+                        try {
+                            Console.Write(" Opción: ");
+                            opcion = int.Parse(Console.ReadLine());
+                            switch (opcion) {
+                                case 1:
+                                    Console.Clear();
+                                    Console.WriteLine($"Puede añadir como máximo {12 - ListaProductos.Count} productos");
+                                    foreach (Productos item in ListaProductos) {
+                                        Console.WriteLine($"{item.Nombre}");
+                                    }
+                                    Console.Write("\nQue tipo de producto quiere añadir: ");
+                                    nombre = Console.ReadLine();
+                                    bool verificar = admin.VerificarProductoExistetnte(nombre);
+                                    if (verificar == true) {
+                                        foreach (Productos item in ListaProductos) {
+                                            if (nombre == item.Nombre) {
+                                                Console.WriteLine("Cuantas unidades quieres añadir: ");
+                                                item.Unidades = int.Parse(Console.ReadLine());
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Console.WriteLine("Este producto no existe.");
+                                        Console.ReadKey();
+                                    }
+                                    break;
+                                case 2:
+                                    int opcion2 = 0;
+                                    Console.Clear();
+                                    Console.WriteLine("Que tipo de producto quiere añadir: ");
+                                    Console.WriteLine("     1. Material preciosos");
+                                    Console.WriteLine("     2. Producto alimenticio");
+                                    Console.WriteLine("     3. Producto electrónico");
+                                    try {
+                                        Console.Write(" Opción: ");
+                                        opcion2 = int.Parse(Console.ReadLine());
+                                        switch (opcion2) {
+                                            case 1:
+                                                Materiales_perciosos p = new Materiales_perciosos();
+                                                p.SolicitarDetalles();
+                                                ListaProductos.Add(p);
+                                                break;
+                                            case 2:
+                                                ProductosAlimenticios a = new ProductosAlimenticios();
+                                                a.SolicitarDetalles();
+                                                ListaProductos.Add(a);
+                                                break;
+                                            case 3:
+                                                ProductosElectronicos e = new ProductosElectronicos();
+                                                e.SolicitarDetalles();
+                                                ListaProductos.Add(e);
+                                                break;
+                                        }
+                                    }
+                                    catch (Exception ex) { Console.WriteLine(ex.Message); }
+                                    break;
+                                default: 
+                                    Console.WriteLine("Opción no válida, por favor seleccione una opción correcta");
+                                    break;
                             }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Este producto no existe.");
-                        Console.ReadKey();
-                    }
+                        catch (Exception e) { Console.WriteLine(e.Message); }
+                    } while (opcion != 3);
+                    
                 }
             }
             catch (FormatException e)
