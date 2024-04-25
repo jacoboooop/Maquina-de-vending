@@ -142,7 +142,7 @@ namespace Maquina_de_vending {
             }
         }
 
-        public void AñadirExistenciasDePreductos(Admin admin)
+        public void AñadirPreductos(Admin admin)
         {
 
             string nombre;

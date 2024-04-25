@@ -56,7 +56,7 @@ namespace Maquina_de_vending
                             break;
                         case 3:
                             if (Login(administrador) == true){
-                                maquina.AñadirExistenciasDePreductos(administrador);
+                                maquina.AñadirPreductos(administrador);
                             }
                             break;
                         case 4:
