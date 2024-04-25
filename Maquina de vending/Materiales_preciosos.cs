@@ -16,5 +16,9 @@ namespace Maquina_de_vending {
             Tipo = tipo;
             Peso = peso;
         }
+
+        public override string MostrarInformcion() {
+            return base.MostrarInformcion() + $"\nTipo de producto {Tipo} \nPeso: {Peso}";
+        }
     }
 }

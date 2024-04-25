@@ -126,6 +126,7 @@ namespace Maquina_de_vending {
             if (verif == false)
             {
                 Console.WriteLine("El ID no se ha encontrado");
+                Console.ReadKey();
             }
             else
             {
