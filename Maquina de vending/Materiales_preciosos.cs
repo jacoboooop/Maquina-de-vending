@@ -23,11 +23,15 @@ namespace Maquina_de_vending {
 
         public override void SolicitarDetalles() {
             base.SolicitarDetalles();
-            Console.Write("Tipo de producto: ");
-            Tipo = Console.ReadLine();
-            Console.Write("Peso: ");
-            Peso = int.Parse(Console.ReadLine());
-            Console.WriteLine("\nProducto añadido correctamente.");
+            try {
+                Console.Write("Tipo de producto: ");
+                Tipo = Console.ReadLine();
+                Console.Write("Peso: ");
+                Peso = int.Parse(Console.ReadLine());
+                Console.WriteLine("\nProducto añadido correctamente.");
+            }
+            catch(Exception ex) { Console.WriteLine(ex.Message); }
+            
         }
     }
 }

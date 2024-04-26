@@ -33,14 +33,18 @@ namespace Maquina_de_vending {
             Console.Clear();
             ID = contador;
             contador++;
-            Console.Write("Nombre: ");
-            Nombre = Console.ReadLine();
-            Console.Write("Unidades: ");
-            Unidades = int.Parse(Console.ReadLine());
-            Console.Write("Precio: ");
-            Precio_unitario = double.Parse(Console.ReadLine());
-            Console.Write("Descripcion: ");
-            Descripcion = Console.ReadLine();
+            try {
+                Console.Write("Nombre: ");
+                Nombre = Console.ReadLine();
+                Console.Write("Unidades: ");
+                Unidades = int.Parse(Console.ReadLine());
+                Console.Write("Precio: ");
+                Precio_unitario = double.Parse(Console.ReadLine());
+                Console.Write("Descripcion: ");
+                Descripcion = Console.ReadLine();
+            }
+            catch(Exception ex) { Console.WriteLine(ex.Message); }
+            
         }
     }
 }
