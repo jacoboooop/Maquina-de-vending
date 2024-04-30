@@ -24,23 +24,28 @@ namespace Maquina_de_vending
             {
                 StreamReader guardado = File.OpenText("guardado.txt");
 
-                string line = guardado.ReadLine();
-                string[] values = line.Split(',');
+                while (!guardado.EndOfStream)
+                {
 
-                if (values[0] == "1")
-                {
-                    Materiales_perciosos m = new Materiales_perciosos(1, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], int.Parse(values[6]));
-                    listaProductos.Add(m);
-                }
-                else if (values[0] == "2")
-                {
-                    ProductosAlimenticios p = new ProductosAlimenticios(2, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], double.Parse(values[5]), int.Parse(values[6]), double.Parse(values[7]));
-                    listaProductos.Add(p);
-                }
-                else if (values[0] == "3")
-                {
-                    ProductosElectronicos e = new ProductosElectronicos(3, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], bool.Parse(values[6]), bool.Parse(values[7]));
-                    listaProductos.Add(e);
+                    string line = guardado.ReadLine();
+                    string[] values = line.Split(',');
+
+                    if (values[0] == "1")
+                    {
+                        Materiales_perciosos m = new Materiales_perciosos(1, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], int.Parse(values[6]));
+                        listaProductos.Add(m);
+                    }
+                    else if (values[0] == "2")
+                    {
+                        ProductosAlimenticios p = new ProductosAlimenticios(2, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], double.Parse(values[5]), int.Parse(values[6]), double.Parse(values[7]));
+                        listaProductos.Add(p);
+                    }
+                    else if (values[0] == "3")
+                    {
+                        ProductosElectronicos e = new ProductosElectronicos(3, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], bool.Parse(values[6]), bool.Parse(values[7]));
+                        listaProductos.Add(e);
+                    }
+
                 }
 
             }
