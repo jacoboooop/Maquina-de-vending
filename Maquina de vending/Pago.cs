@@ -24,10 +24,11 @@ namespace Maquina_de_vending
         {
             Console.Clear();
             double dinero = 0;
-            Console.WriteLine("Introducir monedas");
-            Console.WriteLine($"Dinero necesario: {DineroNecesario}\n");
             do
             {
+                Console.Clear();
+                Console.WriteLine("Introducir monedas");
+                Console.WriteLine($"Dinero necesario: {DineroNecesario}\n");
                 Console.WriteLine($"Dinero actual: {dinero}\n");
                 Console.WriteLine("1. 5 cent");
                 Console.WriteLine("2. 10 cent");
@@ -35,6 +36,7 @@ namespace Maquina_de_vending
                 Console.WriteLine("4. 50 cent");
                 Console.WriteLine("5. 1 euro");
                 Console.WriteLine("6. 2 euros");
+                Console.Write("\n\nOpcion: ");
                 int opcionDinero = int.Parse(Console.ReadLine());
                 switch (opcionDinero)
                 {
@@ -61,7 +63,15 @@ namespace Maquina_de_vending
                         break;
                 }
                 Console.Write("\nOpcion: ");
-            } while (dinero >= DineroNecesario);
+            } while (dinero <= DineroNecesario);
+
+            //Controlar que se ha pagado mas de lo necesario
+
+            if(dinero > DineroNecesario)
+            {
+                double vuelta = dinero - DineroNecesario;
+                Console.WriteLine($"Se le ha deuelto {vuelta}");
+            }
 
             Console.WriteLine("Gracias por su compra");
 
@@ -79,46 +89,55 @@ namespace Maquina_de_vending
             Console.WriteLine("Introduzca los datos de la tajeta");
             Console.Write("Numero de tarjeta: ");
             string numTarjeta = Console.ReadLine();
-            if (numTarjeta.Length < 16)
+            do
             {
-                Console.WriteLine("El numero de tarjeta tiene que tener por lo menos 16 dijitos");
-                return;
-            }
-            else
-            {
-                Console.Write("Fecha de caducidad: ");
-                DateTime caducidad = DateTime.Parse(Console.ReadLine());
-                if (caducidad < DateTime.Now)
+                if (numTarjeta.Length < 16)
                 {
-                    Console.WriteLine("Tarjeta caducada");
+                    Console.WriteLine("El numero de tarjeta tiene que tener por lo menos 16 dijitos");
+                    Console.ReadKey();
                     return;
                 }
+
                 else
                 {
-
-                    Console.Write("Numero secreto: ");
-                    string numSecreto = Console.ReadLine();
-                    if (numSecreto.Length < 4)
+                    Console.Write("Fecha de caducidad: ");
+                    DateTime caducidad = DateTime.Parse(Console.ReadLine());
+                    if (caducidad < DateTime.Now)
                     {
-                        Console.Clear();
-                        Console.WriteLine("Gracias por su compra");
-
-                        foreach (Productos p in listaCompra)
-                        {
-                            Console.WriteLine($"Se ha dispensado {p.Nombre}");
-                        }
-
-                        Console.ReadKey();
+                        Console.WriteLine("Tarjeta caducada");
                         return;
                     }
                     else
                     {
-                        Console.WriteLine("El numero secreto tiene que tener un minimo de 3 digitos");
-                        return;
-                    }
 
+                        Console.Write("Numero secreto: ");
+                        string numSecreto = Console.ReadLine();
+                        if (numSecreto.Length < 4)
+                        {
+
+                            Console.WriteLine("El numero secreto tiene que tener un minimo de 3 digitos");
+                            return;
+
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Gracias por su compra");
+
+                            foreach (Productos p in listaCompra)
+                            {
+                                Console.WriteLine($"Se ha dispensado {p.Nombre}");
+                            }
+
+                            Console.ReadKey();
+                            return;
+                        }
+
+                    }
                 }
-            }
+
+            } while (numTarjeta.Length != 16);
+            
         }
     }
 }

@@ -7,20 +7,45 @@ using System.Threading;
 using System.Security.Cryptography;
 using System.IO;
 
+
 namespace Maquina_de_vending
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
-
             List<Productos> listaProductos = new List<Productos>();
-            MaquinaVending maquina = new MaquinaVending(listaProductos);       
+            MaquinaVending maquina = new MaquinaVending(listaProductos);
 
-            Admin administrador = new Admin(listaProductos ,1234);
+            Admin administrador = new Admin(listaProductos, 1234);
 
+            if (File.Exists("guardado.txt"))
+            {
+                StreamReader guardado = File.OpenText("guardado.txt");
 
-            
+                string line = guardado.ReadLine();
+                string[] values = line.Split(',');
+
+                if (values[0] == "1")
+                {
+                    Materiales_perciosos m = new Materiales_perciosos(1, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], int.Parse(values[6]));
+                    listaProductos.Add(m);
+                }
+                else if (values[0] == "2")
+                {
+                    ProductosAlimenticios p = new ProductosAlimenticios(2, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], double.Parse(values[5]), int.Parse(values[6]), double.Parse(values[7]));
+                    listaProductos.Add(p);
+                }
+                else if (values[0] == "3")
+                {
+                    ProductosElectronicos e = new ProductosElectronicos(3, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], bool.Parse(values[6]), bool.Parse(values[7]));
+                    listaProductos.Add(e);
+                }
+
+            }
+
+     
             int opcion = 0;
             do
             {
@@ -63,6 +88,11 @@ namespace Maquina_de_vending
                             if (Login(administrador) == true) {
                                 maquina.AñadirNuevosProductos();
                             }
+                            break;
+                        case 5:
+                            Console.WriteLine("Hasta la proxima");
+                            Guardado(listaProductos);
+                            Console.ReadKey();
                             break;
                         default:
                             Console.WriteLine("La opción nos es valida");
@@ -121,6 +151,21 @@ namespace Maquina_de_vending
             else {
                 return false;
             }
+        }
+
+        public static void Guardado(List<Productos> listaProductos)
+        {
+            String path = "guardado.txt";
+
+            StreamWriter sr = new StreamWriter(path);
+
+            foreach (Productos p in listaProductos)
+            {
+                sr.WriteLine(p.GuardadoMaquina());
+            }
+
+            sr.Close();
+
         }
     }
 }

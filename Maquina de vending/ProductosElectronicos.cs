@@ -75,5 +75,10 @@ namespace Maquina_de_vending
             } while (Respuestaprecargadas > 1);
             Console.WriteLine("\nProducto añadido correctamente.");
         }
+
+        public override string GuardadoMaquina()
+        {
+            return base.GuardadoMaquina() + $",{Material},{Pilas},{Precargado}";
+        }
     }
 }

@@ -46,5 +46,10 @@ namespace Maquina_de_vending
             }
             catch (Exception e) { Console.WriteLine(e.Message); }
         }
+
+        public override string GuardadoMaquina()
+        {
+            return base.GuardadoMaquina() + $",{Calorias},{Grasas},{Azucares}";
+        }
     }
 }

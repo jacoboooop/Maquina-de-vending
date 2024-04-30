@@ -19,6 +19,8 @@ namespace Maquina_de_vending {
 
         public Productos() { }
         public Productos(int tipoProducto,string nombre, int unidades, double precio_unitario, string descripcion) {
+            ID = contador;
+            contador++;
             TipoProducto = tipoProducto;
             Nombre = nombre;
             Unidades = unidades;
@@ -45,6 +47,11 @@ namespace Maquina_de_vending {
             }
             catch(Exception ex) { Console.WriteLine(ex.Message); }
             
+        }
+
+        public virtual string GuardadoMaquina()
+        {
+            return $"{ID},{Nombre},{Unidades},{Precio_unitario},{Descripcion}";
         }
     }
 }

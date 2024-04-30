@@ -48,6 +48,7 @@ namespace Maquina_de_vending {
             ComprarProductos(ListaProductos, listaCompra);
             do
             {
+                Console.Clear();
                 Console.WriteLine("1. Seguir comprando productos");
                 Console.WriteLine("2. Pagar");
                 try
@@ -60,6 +61,7 @@ namespace Maquina_de_vending {
                             ComprarProductos(ListaProductos, listaCompra);
                             break;
                         case 2:
+                            Console.Clear();
                             Console.WriteLine("Vamos a pagar la compra...");
                             break;
 
@@ -90,6 +92,7 @@ namespace Maquina_de_vending {
             Console.WriteLine("Como desea pagar la compra");
             Console.WriteLine("1. Pagar en efectivo");
             Console.WriteLine("2. Pago con tarjeta");
+            Console.Write("\n\nOpcion: ");
             int opcionPago = int.Parse(Console.ReadLine());
             switch (opcionPago)
             {
@@ -116,12 +119,20 @@ namespace Maquina_de_vending {
             Console.Write("\n\nID: ");
             int id = int.Parse(Console.ReadLine());
             bool verif = false;
-            foreach (Productos p in listaCompra)
+            foreach (Productos p in listaProductos)
             {
                 if (id == p.ID)
                 {
-                    verif = true;
-                    listaCompra.Add(p);
+                    if(p.Unidades == 0)
+                    {
+                        Console.WriteLine("El articulo no esta disponible");
+                    }
+                    else
+                    {
+                        verif = true;
+                        listaCompra.Add(p);
+                        p.Unidades--;
+                    }
                 }
             }
             if (verif == false)
@@ -131,14 +142,9 @@ namespace Maquina_de_vending {
             }
             else
             {
-                Console.WriteLine("Gracias por la compra");
-                foreach (Productos e in listaProductos)
-                {
-                    if (e.Unidades == 0)
-                    {
-                        listaProductos.Remove(e);
-                    }
-                }
+                Console.WriteLine("Producto añadido a la compra");
+
+                Console.ReadKey();
             }
         }
 
@@ -178,8 +184,9 @@ namespace Maquina_de_vending {
                                     if (verificar == true) {
                                         foreach (Productos item in ListaProductos) {
                                             if (nombre == item.Nombre) {
-                                                Console.WriteLine("Cuantas unidades quieres añadir: ");
-                                                item.Unidades = int.Parse(Console.ReadLine());
+                                                Console.Write("Cuantas unidades quieres añadir: ");
+                                                int unidadesNuevas = int.Parse(Console.ReadLine());
+                                                item.Unidades = item.Unidades + unidadesNuevas;
                                             }
                                         }
                                     }
@@ -202,16 +209,19 @@ namespace Maquina_de_vending {
                                             case 1:
                                                 Materiales_perciosos p = new Materiales_perciosos();
                                                 p.SolicitarDetalles();
+                                                p.TipoProducto = 1;
                                                 ListaProductos.Add(p);
                                                 break;
                                             case 2:
                                                 ProductosAlimenticios a = new ProductosAlimenticios();
                                                 a.SolicitarDetalles();
+                                                a.TipoProducto = 2;
                                                 ListaProductos.Add(a);
                                                 break;
                                             case 3:
                                                 ProductosElectronicos e = new ProductosElectronicos();
                                                 e.SolicitarDetalles();
+                                                e.TipoProducto = 3;
                                                 ListaProductos.Add(e);
                                                 break;
                                         }
@@ -237,32 +247,32 @@ namespace Maquina_de_vending {
         public void AñadirNuevosProductos()
         {
             Console.Clear();
-            Console.Write("Que nombre tiene el archivo tipo csv para cargar los productos: ");
+            Console.Write("Que nombre tiene el archivo tipo txt para cargar los productos: ");
             string nombreArchivo = Console.ReadLine();
 
-            if (File.Exists($"{nombreArchivo}.csv"))
+            if (File.Exists($"{nombreArchivo}.txt"))
             {
 
-                using (StreamReader cargaProductos = File.OpenText($"{nombreArchivo}.csv"))
+                using (StreamReader cargaProductos = File.OpenText($"{nombreArchivo}.txt"))
                 {
                     while (!cargaProductos.EndOfStream)
                     {
                         string line = cargaProductos.ReadLine();
-                        string[] values = line.Split(';');
+                        string[] values = line.Split(',');
 
                         if (values[0] == "1")
                         {
-                            Materiales_perciosos m = new Materiales_perciosos(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], values[6], int.Parse(values[7]));
+                            Materiales_perciosos m = new Materiales_perciosos(1, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], int.Parse(values[6]));
                             ListaProductos.Add(m);
                         }
                         else if (values[0] == "2")
                         {
-                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], double.Parse(values[6]), int.Parse(values[7]), double.Parse(values[8]));
+                            ProductosAlimenticios p = new ProductosAlimenticios(2, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], double.Parse(values[5]), int.Parse(values[6]), double.Parse(values[7]));
                             ListaProductos.Add(p);
                         }
                         else if (values[0] == "3")
                         {
-                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(values[1]), values[2], int.Parse(values[3]), double.Parse(values[4]), values[5], values[6], bool.Parse(values[7]), bool.Parse(values[8]));
+                            ProductosElectronicos e = new ProductosElectronicos(3, values[1], int.Parse(values[2]), double.Parse(values[3]), values[4], values[5], bool.Parse(values[6]), bool.Parse(values[7]));
                             ListaProductos.Add(e);
                         }
 

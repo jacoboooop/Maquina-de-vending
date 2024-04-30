@@ -33,5 +33,10 @@ namespace Maquina_de_vending {
             catch(Exception ex) { Console.WriteLine(ex.Message); }
             
         }
+
+        public override string GuardadoMaquina()
+        {
+            return base.GuardadoMaquina() + $",{Tipo},{Peso}";
+        }
     }
 }
